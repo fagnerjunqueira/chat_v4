@@ -19,7 +19,7 @@
 get_instancia_add() {
   
   print_banner
-  printf "${WHITE} 💻 Nome da Instância/Empresa (letras minúsculas, sem espaços ou caracteres especiais):${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Informe um nome para a Instancia/Empresa que será instalada (Não utilizar espaços ou caracteres especiais, Utilizar Letras minusculas; ):${GRAY_LIGHT}"
   printf "\n\n"
   read -p "> " instancia_add
 }
@@ -203,12 +203,12 @@ inquiry_options() {
   print_banner
   printf "${WHITE} 💻 Bem vindo(a) ao Whaticket SaaS, Selecione abaixo a proxima ação!${GRAY_LIGHT}"
   printf "\n\n"
-  printf "   [1] Instalar Whaticket SaaS \n"
-  # printf "   [1] Atualizar Whaticket SaaS \n"
-  printf "   [2] Deletar Whaticket SaaS \n"
-  printf "   [3] Bloquear Whaticket SaaS \n"
-  printf "   [4] Desbloquear Whaticket SaaS \n"
-  printf "   [5] Alter. dominio Whaticket SaaS \n"
+  printf "   [1] Instalar Whaticket SaaS\n"
+  # printf "   [1] Atualizar Whaticket SaaS\n"
+  printf "   [2] Deletar Whaticket SaaS\n"
+  printf "   [3] Bloquear Whaticket SaaS\n"
+  printf "   [4] Desbloquear Whaticket SaaS\n"
+  printf "   [5] Alter. dominio Whaticket SaaS\n"
   printf "\n"
   read -p "> " option
 

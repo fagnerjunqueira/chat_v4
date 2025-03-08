@@ -15,8 +15,8 @@ system_create_user() {
   sleep 2
 
   sudo su - root <<EOF
-  useradd -m -p $(openssl passwd -crypt ${deploy_password}) -s /bin/bash -G sudo deploy
-  usermod -aG sudo deploy
+  useradd -m -p $(openssl passwd -crypt ${deploy_password}) -s /bin/bash -G sudo deployagencianx
+  usermod -aG sudo deployagencianx
 EOF
 
   sleep 2
@@ -36,9 +36,9 @@ system_mv_folder() {
   sleep 2
 
   sudo su - root <<EOF
-  cp "${PROJECT_ROOT}"/whaticket.zip /home/deploy/${instancia_add}/
+  cp "${PROJECT_ROOT}"/whaticket.zip /home/deployagencianx/${instancia_add}/
 EOF
-  # git clone ${link_git} /home/deploy/${instancia_add}/
+  # git clone ${link_git} /home/deployagencianx/${instancia_add}/
 
   sleep 2
 }
@@ -55,7 +55,7 @@ system_create_folder() {
 
   sleep 2
 
-  sudo su - deploy <<EOF 
+  sudo su - deployagencianx <<EOF 
   mkdir ${instancia_add}
 EOF
 
@@ -74,8 +74,8 @@ system_unzip_whaticket() {
 
   sleep 2
 
-  sudo su - deploy <<EOF
-  unzip /home/deploy/${instancia_add}/whaticket.zip -d /home/deploy/${instancia_add}
+  sudo su - deployagencianx <<EOF
+  unzip /home/deployagencianx/${instancia_add}/whaticket.zip -d /home/deployagencianx/${instancia_add}
 EOF
 
   sleep
@@ -132,8 +132,8 @@ EOF
 
 sleep 2
 
-sudo su - deploy <<EOF
- rm -rf /home/deploy/${empresa_delete}
+sudo su - deployagencianx <<EOF
+ rm -rf /home/deployagencianx/${empresa_delete}
  pm2 delete ${empresa_delete}-frontend ${empresa_delete}-backend
  pm2 save
 EOF
@@ -161,7 +161,7 @@ configurar_bloqueio() {
 
   sleep 2
 
-sudo su - deploy <<EOF
+sudo su - deployagencianx <<EOF
  pm2 stop ${empresa_bloquear}-backend
  pm2 save
 EOF
@@ -188,7 +188,7 @@ configurar_desbloqueio() {
 
   sleep 2
 
-sudo su - deploy <<EOF
+sudo su - deployagencianx <<EOF
  pm2 start ${empresa_bloquear}-backend
  pm2 save
 EOF
@@ -223,10 +223,10 @@ EOF
 
 sleep 2
 
-  sudo su - deploy <<EOF
-  cd && cd /home/deploy/${empresa_dominio}/frontend
+  sudo su - deployagencianx <<EOF
+  cd && cd /home/deployagencianx/${empresa_dominio}/frontend
   sed -i "1c\REACT_APP_BACKEND_URL=https://${alter_backend_url}" .env
-  cd && cd /home/deploy/${empresa_dominio}/backend
+  cd && cd /home/deployagencianx/${empresa_dominio}/backend
   sed -i "2c\BACKEND_URL=https://${alter_backend_url}" .env
   sed -i "3c\FRONTEND_URL=https://${alter_frontend_url}" .env 
 EOF
@@ -320,7 +320,7 @@ system_node_install() {
   sleep 2
 
   sudo su - root <<EOF
-  curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+  curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
   apt-get install -y nodejs
   sleep 2
   npm install -g npm@latest
@@ -544,7 +544,7 @@ system_nginx_conf() {
 
 sudo su - root << EOF
 
-cat > /etc/nginx/conf.d/deploy.conf << 'END'
+cat > /etc/nginx/conf.d/deployagencianx.conf << 'END'
 client_max_body_size 100M;
 END
 
