@@ -14,8 +14,8 @@ frontend_node_dependencies() {
 
   sleep 2
 
-  sudo su - deploybrandx <<EOF
-  cd /home/deploybrandx/${instancia_add}/frontend
+  sudo su - deploy <<EOF
+  cd /home/deploy/${instancia_add}/frontend
   npm install --force
 EOF
 
@@ -34,8 +34,8 @@ frontend_node_build() {
 
   sleep 2
 
-  sudo su - deploybrandx <<EOF
-  cd /home/deploybrandx/${instancia_add}/frontend
+  sudo su - deploy <<EOF
+  cd /home/deploy/${instancia_add}/frontend
   npm run build
 EOF
 
@@ -54,11 +54,11 @@ frontend_update() {
 
   sleep 2
 
-  sudo su - deploybrandx <<EOF
-  cd /home/deploybrandx/${empresa_atualizar}
+  sudo su - deploy <<EOF
+  cd /home/deploy/${empresa_atualizar}
   pm2 stop ${empresa_atualizar}-frontend
   git pull
-  cd /home/deploybrandx/${empresa_atualizar}/frontend
+  cd /home/deploy/${empresa_atualizar}/frontend
   npm install
   rm -rf build
   npm run build
@@ -87,8 +87,8 @@ frontend_set_env() {
   backend_url=${backend_url%%/*}
   backend_url=https://$backend_url
 
-sudo su - deploybrandx << EOF
-  cat <<[-]EOF > /home/deploybrandx/${instancia_add}/frontend/.env
+sudo su - deploy << EOF
+  cat <<[-]EOF > /home/deploy/${instancia_add}/frontend/.env
 REACT_APP_BACKEND_URL=${backend_url}
 REACT_APP_HOURS_CLOSE_TICKETS_AUTO = 24
 [-]EOF
@@ -96,8 +96,8 @@ EOF
 
   sleep 2
 
-sudo su - deploybrandx << EOF
-  cat <<[-]EOF > /home/deploybrandx/${instancia_add}/frontend/server.js
+sudo su - deploy << EOF
+  cat <<[-]EOF > /home/deploy/${instancia_add}/frontend/server.js
 //simple express server to run frontend production build;
 const express = require("express");
 const path = require("path");
@@ -127,7 +127,7 @@ frontend_start_pm2() {
   sleep 2
 
   sudo su - root <<EOF
-  cd /home/deploybrandx/${instancia_add}/frontend
+  cd /home/deploy/${instancia_add}/frontend
   pm2 start server.js --name ${instancia_add}-frontend
   pm2 save --force
 EOF
@@ -136,7 +136,7 @@ EOF
   
   sudo su - root <<EOF
    pm2 startup
-  sudo env PATH=$PATH:/usr/bin /usr/lib/node_modules/pm2/bin/pm2 startup systemd -u deploybrandx --hp /home/deploybrandx
+  sudo env PATH=$PATH:/usr/bin /usr/lib/node_modules/pm2/bin/pm2 startup systemd -u deploy --hp /home/deploy
 EOF
   sleep 2
 }

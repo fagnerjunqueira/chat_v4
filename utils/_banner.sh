@@ -22,16 +22,26 @@ print_banner() {
   printf "\n\n"
 
   printf "${GREEN}";
-  printf "ESSE MATERIAL FAZ PARTE DA COMUNIDADE BrandX\n";
-  printf "\n";
-  printf "Compartilhar, vender ou fornecer essa solução\n";
-  printf "sem autorização é crime previsto no artigo 184\n";
-  printf "do código penal que descreve a conduta criminosa\n";
-  printf "de infringir os direitos autorais da Brandx.\n";
-  printf "\n";
-  printf "PIRATEAR ESSA SOLUÇÃO É CRIME.\n";
-  printf "\n";
-  printf " © Comunidade brandx - brandxdigital.com.br\n";
+  printf "                                                     ▄▄█▀▀▀▀▀▀▀█▄▄  \n";
+  printf "                                                   ${GREEN}▄█▀${NC}   ${WHITE}▄▄${NC}      ${GREEN}▀█▄\n";
+  printf "                                                   ${GREEN}█${NC}    ${WHITE}███${NC}         ${GREEN}█\n";
+  printf "                                                   ${GREEN}█${NC}    ${WHITE}██▄         ${GREEN}█${NC}\n";
+  printf "                                                   ${GREEN}█${NC}     ${WHITE}▀██▄${NC} ${WHITE}██${NC}    ${GREEN}█\n";
+  printf "                                                   ${GREEN}█${NC}       ${WHITE}▀███▀${NC}    ${GREEN}█\n";
+  printf "                                                   ${GREEN}▀█▄           ▄█▀\n";
+  printf "                                                    ▄█    ▄▄▄▄█▀▀  \n";
+  printf "                                                    █  ▄█▀        \n";
+  printf "                                                    ▀▀▀▀          \n";
+  printf "${NC}";
+
+  printf "\n"
+
+  printf "${GREEN}";
+  printf "██     ██ ██   ██  █████  ████████ ██  ██████ ██   ██ ███████ ████████\n";
+  printf "██     ██ ██   ██ ██   ██    ██    ██ ██      ██  ██  ██         ██   \n";
+  printf "██  █  ██ ███████ ███████    ██    ██ ██      █████   █████      ██   \n";
+  printf "██ ███ ██ ██   ██ ██   ██    ██    ██ ██      ██  ██  ██         ██   \n";
+  printf " ███ ███  ██   ██ ██   ██    ██    ██  ██████ ██   ██ ███████    ██   \n";
   printf "${NC}";
 
   printf "\n"
